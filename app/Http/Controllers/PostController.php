@@ -282,7 +282,7 @@ class PostController extends Controller
         ->join('posts', 'posts.post_id', '=', 'user_post_like.post_id')
         ->join('users', 'users.user_id', '=', 'user_post_like.user_id')
         ->selectRaw('posts.*, users.user_name, sum(like_state) as top')
-        ->groupByRaw(['posts.post_id', 'users.user_name'])->orderByDesc('top')->limit(5)->get();
+        ->groupBy('posts.post_id', 'users.user_name')->orderByDesc('top')->limit(5)->get();
 
         dd($tops);
         return view('user.top_post', compact('tops'));
