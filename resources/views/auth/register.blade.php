@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Login Admin -->
-<form method="POST" action="{{ URL::to('/register') }}">
+<form method="POST" action="{{ reoute('register') }}">
     @csrf
     <div class="login-form">
         <!-- logo-login -->
