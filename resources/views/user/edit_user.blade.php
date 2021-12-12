@@ -46,7 +46,7 @@
                                                     <div class="tabbable">
                                                         <div class="tab-content profile-edit-tab-content">
                                                             <div id="edit-basic" class="tab-pane in active">
-                                                                <h4 class="header blue bolder smaller">General</h4>
+                                                                <h4 class="header blue bolder smaller">ユーザー情報</h4>
 
                                                                 <div class="row">
                                                                     @if ($user->avatar_url != null)
@@ -70,7 +70,7 @@
 
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label no-padding-right"
-                                                                        for="form-field-username">Username</label>
+                                                                        for="form-field-username">名前</label>
 
                                                                     <div class="col-sm-9">
                                                                         <input type="text" id="form-field-username"
@@ -86,10 +86,10 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="space"></div>
-                                                                <h4 class="header blue bolder smaller">Contact</h4>
+                                                                <h4 class="header blue bolder smaller">問い合わせ</h4>
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label no-padding-right"
-                                                                        for="form-field-email">Email</label>
+                                                                        for="form-field-email">メール</label>
 
                                                                     <div class="col-sm-9">
                                                                         <span>
@@ -105,7 +105,7 @@
 
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label no-padding-right"
-                                                                        for="form-field-website">Address</label>
+                                                                        for="form-field-website">アドレス</label>
 
                                                                     <div class="col-sm-9">
                                                                         <span>
@@ -122,7 +122,7 @@
 
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label no-padding-right"
-                                                                        for="form-field-phone">Phone</label>
+                                                                        for="form-field-phone">電話番号</label>
 
                                                                     <div class="col-sm-9">
                                                                         <span>
@@ -147,7 +147,7 @@
 
                                                                 <div class="form-group">
                                                                     <label class="col-sm-3 control-label no-padding-right"
-                                                                        for="form-field-website">Description</label>
+                                                                        for="form-field-website">紹介文</label>
 
                                                                     <div class="col-sm-9">
                                                                         <span>
@@ -160,15 +160,14 @@
 
                                                                 <div class="space"></div>
 
-                                                                <h4 class="header blue bolder smaller">Password</h4>
+                                                                <h4 class="header blue bolder smaller">パスワード</h4>
                                                                 <div id="edit-password" class="tab-pane">
                                                                     <div class="space-10"></div>
 
                                                                     <div class="form-group">
                                                                         <label
                                                                             class="col-sm-3 control-label no-padding-right"
-                                                                            for="form-field-pass0">Current
-                                                                            Password</label>
+                                                                            for="form-field-pass0">現在パスワード</label>
                                                                         <div class="col-sm-9">
                                                                             <input type="password" id="form-field-pass0"
                                                                                 name="pass0">
@@ -180,8 +179,7 @@
                                                                     <div class="form-group">
                                                                         <label
                                                                             class="col-sm-3 control-label no-padding-right"
-                                                                            for="form-field-pass1">New
-                                                                            Password</label>
+                                                                            for="form-field-pass1">新しいパスワード</label>
                                                                         <div class="col-sm-9">
                                                                             <input type="password" id="form-field-pass1"
                                                                                 name="pass1">
@@ -193,8 +191,7 @@
                                                                     <div class="form-group">
                                                                         <label
                                                                             class="col-sm-3 control-label no-padding-right"
-                                                                            for="form-field-pass2">Confirm
-                                                                            Password</label>
+                                                                            for="form-field-pass2">確認パスワード</label>
 
                                                                         <div class="col-sm-9">
                                                                             <input type="password" id="form-field-pass2"
@@ -209,12 +206,12 @@
                                                                     <div class="col-md-offset-3 col-md-9">
                                                                         <button class="btn btn-info" type="submit">
                                                                             <i class="ace-icon fa fa-check bigger-110"></i>
-                                                                            Save
+                                                                            保存
                                                                         </button>
                                                                         &nbsp; &nbsp;
                                                                         <button class="btn" type="reset">
                                                                             <i class="ace-icon fa fa-undo bigger-110"></i>
-                                                                            Reset
+                                                                            リセット
                                                                         </button>
 
                                                                     </div>
