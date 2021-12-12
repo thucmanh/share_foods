@@ -45,7 +45,7 @@
                         @if($post->post_url == null)
                         <img class="img-fluid" src="{{asset('/user/img/pj3.1.png')}}" alt="">
                         @else
-                        <img class="img-fluid" src="{{asset('/storage/post_url/'.$post->post_url)}}" alt="">
+                        <img class="img-fluid" src="{{$post->post_url}}" alt="">
                         @endif
                     </div>
                     <div class="blog_details">
@@ -113,7 +113,7 @@
                                     </div>
                                   @else
                                   <div class="cmt-ava">
-                                        <img src="{{URL::to('/storage/avatar_url/'.$comment->avatar_url)}}" alt="author avatar">
+                                        <img src="{{$comment->avatar_url}}" alt="author avatar">
                                   </div>
                                   @endif
                                  </div>

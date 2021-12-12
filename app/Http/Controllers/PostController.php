@@ -135,7 +135,6 @@ class PostController extends Controller
                     ]
                 );
                 $path = $this->save_image($request->file('post_url'));
-                dd($path);
                 $post->post_url = $path['data']['url'];
             }
 

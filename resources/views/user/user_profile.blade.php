@@ -49,7 +49,7 @@
                                                             <div class="row">
                                                                 @if ($user->avatar_url != null)
                                                                 <div class="block-ava">
-                                                                    <img src="/storage/avatar_url/{{ $user->avatar_url }}">
+                                                                    <img src="{{ $user->avatar_url }}">
                                                                 </div>
                                                                     {{-- <div class="vspace-12-sm"></div> --}}
                                                                 @else

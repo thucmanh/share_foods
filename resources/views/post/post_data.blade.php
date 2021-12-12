@@ -7,7 +7,7 @@
                         @if($post->post_url == null)
                             <img src="{{asset('/user/img/pj3.1.png')}}" alt="" style="height: 200px;">
                         @else
-                            <img src="{{asset('/storage/post_url/'.$post->post_url)}}" alt=""  style="height: 200px;">
+                            <img src="{{$post->post_url}}" alt=""  style="height: 200px;">
                         @endif
                     </div>
                     <div class="properties__caption">
