@@ -3,11 +3,6 @@
 @section('content')
 <!-- Login Admin -->
 <form method="POST" action="{{ URL::to('/register') }}">
-    @if($errors->has())
-    @foreach ($errors->all() as $error)
-        <div style="color: red;">{{ $error }}</div>
-    @endforeach
-    @endif
     @csrf
     <div class="login-form">
         <!-- logo-login -->
