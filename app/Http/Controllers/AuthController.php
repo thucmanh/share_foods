@@ -26,16 +26,17 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        dd($request);
         if ($request->isMethod('post')) {
             $request->flash();
             $request->validate(
                 [
+                    'password' => 'confirmed',
                     'phone' => 'required|min:11|numeric',
                     'images' => 'required',
                     'images.*' => 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:4096',
                 ],
                 [
+                    'password.confirmed' => '同じパスワードを入力してください',
                     'phone.min' => '10文字で電話を入力してください',
                     'images.required' => 'イメージをアップロードしてください',
                     'images.*.mimes' => '画像拡張子は「jpg, png, jpeg, gif, svg」が必要です',
