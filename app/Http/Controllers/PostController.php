@@ -28,7 +28,7 @@ class PostController extends Controller
     function all_post(Request $request)
     {
         $posts = Post::paginate(3);
-        $title = "Posts";
+        $title = "投稿";
         if ($request->ajax()) {
             return view('post.post_data', compact('posts', 'title'))->render();
         }
