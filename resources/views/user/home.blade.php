@@ -33,7 +33,7 @@
         </div> -->
         <div class="card-group">
             @foreach($posts as $post)
-            @if(Auth::user()->isrestauran)
+            @if($post->user->isrestauran)
                 <div class="properties properties_home pb-20" style="border-color: rgb(201, 76, 76);border-style: solid;">
             @else
                 <div class="properties properties_home pb-20">
