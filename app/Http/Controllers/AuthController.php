@@ -52,6 +52,7 @@ class AuthController extends Controller
             $user->password = Hash::make($request->password);
             $user->phone = $request->phone;
             $user->avatar_url = $path['data']['url'];
+            $user->des = "私は新しいユーザーであり、料理人です。";
 
             $user->save();
 
