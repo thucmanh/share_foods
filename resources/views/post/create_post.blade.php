@@ -33,6 +33,7 @@
             <h4>Your blog</h4>
             <form class="form-contact comment_form" action="{{URL::to('/create_post')}}" id="commentForm" method="post" enctype="multipart/form-data" >
                 {{ csrf_field() }}
+                @csrf
                 <div class="row">
 
                     <div class="col-sm-4">
