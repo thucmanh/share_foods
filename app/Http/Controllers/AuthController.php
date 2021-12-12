@@ -26,6 +26,17 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         if ($request->isMethod('post')) {
+            $request->flash();
+            $request->validate(
+                [
+                    'phone' => 'required|min:11|numeric|regex:/^([0-9\s\-\+\(\)]*)$/'
+                ],
+                [
+                    'phone.regex' => '正しい電話フォーマットを入力してください'
+                ]
+            );
+
+            
         }
         return view('user.register');
     }

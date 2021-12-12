@@ -34,18 +34,18 @@
 
         <div class="form-input">
             <label for="phone" class="col-form-label text-md-right">電話番号</label>
-            <input id="phone" type="phone" name="phone"/>
+            <input id="phone" type="phone" name="phone" value="{{ old('phone') }}"/>
         </div>
 
         <div class="form-input">
             <label for="email" class="col-form-label text-md-right">アバター</label>
-            <input type="file" name="avatar_url">
+            <input type="file" name="avatar_url" value="{{ old('avatar_url') }}">
         </div>
 
         <div class="form-input">
             <label for="password" class="col-form-label text-md-right">パスワード</label>
             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                name="password">
+                name="password" value="{{ old('password') }}">
             @error('password')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -55,14 +55,14 @@
 
         <div class="form-input">
             <label for="password-confirm" class="col-form-label text-md-right">パスワード確認</label>
-            <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+            <input id="password-confirm" type="password" class="form-control" name="password_confirm" value="{{ old('password_confirm') }}">
         </div>
 
         <div class="form-input pt-30">
             <input type="submit" name="submit" value="登録">
         </div>
         <!-- Forget Password -->
-        <a href="{{ URL::to('/login') }}" class="registration">ログイン</a>
+        <a href="{{ URL::to('/login') }}" class="registration">サインアップ</a>
     </div>
 </form>
 <!-- /end login form -->
