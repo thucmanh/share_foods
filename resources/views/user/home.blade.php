@@ -12,8 +12,8 @@
                 <div class="row">
                     <div class="col-xl-6 col-lg-8 col-md-12">
                         <div class="hero__caption hero__caption2">
-                        <h1 data-animation="fadeInLeft" data-delay="0.2s">レシビを共有する<br> プラットフォーム</h1>
-                        <p data-animation="fadeInLeft" data-delay="0.4s">家族や友達と一緒に食べると、いつも美味しくなります</p>
+                            <h1 data-animation="fadeInLeft" data-delay="0.2s">レシビを共有する<br> プラットフォーム</h1>
+                            <p data-animation="fadeInLeft" data-delay="0.4s">家族や友達と一緒に食べると、いつも美味しくなります</p>
                         </div>
                     </div>
                 </div>
@@ -32,27 +32,31 @@
             </div>
         </div> -->
         <div class="card-group">
-        @foreach($posts as $post)
-            <div class="properties properties_home pb-20" >
-                <div class="properties__card" style="height: 500px;">
-                    <div class="properties__img overlay1">
-                        @if($post->post_url == null)
+            @foreach($posts as $post)
+            @if(Auth::user()->isrestauran)
+                <div class="properties properties_home pb-20" style="border-color: rgb(201, 76, 76);border-style: solid;">
+            @else
+                <div class="properties properties_home pb-20">
+            @endif
+                    <div class="properties__card" style="height: 500px;">
+                        <div class="properties__img overlay1">
+                            @if($post->post_url == null)
                             <img src="{{asset('/user/img/pj3.1.png')}}" alt="" style="height: 200px;">
-                        @else
-                            <img src="{{$post->post_url}}" alt=""  style="height: 200px;">
-                        @endif
+                            @else
+                            <img src="{{$post->post_url}}" alt="" style="height: 200px;">
+                            @endif
+                        </div>
+                        <div class="properties__caption" style="height: 200px;">
+                            <h3>{{$post->title}}</h3>
+                            <p style="white-space: nowrap;overflow: hidden;width: 20em;text-overflow: ellipsis;">{{$post->description}}</p>
+                            <p style="font-style: italic"><a style="color:blue; " href="{{ URL::to('/users/' . $post->user_id) . '/posts' }}"><b>{{$post->user->user_name}}</b></a>によって{{$post->date_create}}に投稿された </p>
+                        </div>
+                        <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">とっと見る</a>
                     </div>
-                    <div class="properties__caption" style="height: 200px;">
-                        <h3>{{$post->title}}</h3>
-                        <p style="white-space: nowrap;overflow: hidden;width: 20em;text-overflow: ellipsis;">{{$post->description}}</p>
-                        <p style="font-style: italic"><a style="color:blue; " href="{{ URL::to('/users/' . $post->user_id) . '/posts' }}"><b>{{$post->user->user_name}}</b></a>によって{{$post->date_create}}に投稿された </p>
-                    </div>
-                    <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">とっと見る</a>
                 </div>
+                @endforeach
             </div>
-            @endforeach
-</div>  
+        </div>
     </div>
-</div>
-<!-- Courses area End -->
-@endsection
+    <!-- Courses area End -->
+    @endsection
