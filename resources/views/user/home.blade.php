@@ -35,10 +35,10 @@
             @foreach($posts as $post)
             <div class="properties properties_home pb-20">
                 @if($post->user->isrestauran)
-                <div class="properties__card" style="height: 500px;" style="border-color: rgb(201, 76, 76);border-style: solid;">
-                    @else
-                    <div class="properties__card" style="height: 500px;">
-                        @endif
+                <div class="properties__card" style="height: 500px;border-color: rgb(201, 76, 76);border-style: solid;">
+                @else
+                <div class="properties__card" style="height: 500px;">
+                @endif
                         <div class="properties__img overlay1">
                             @if($post->post_url == null)
                             <img src="{{asset('/user/img/pj3.1.png')}}" alt="" style="height: 200px;">
