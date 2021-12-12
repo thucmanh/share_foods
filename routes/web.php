@@ -41,7 +41,7 @@ Route::match(['GET','POST'],'/logout','Auth\LoginController@logout');
 // Route::match(['GET','POST'],'/change-pass','AuthController@change_pass');
 Route::get('users/{id}','Auth\UserController@show');
 Route::get('users/{id}/edit', 'Auth\UserController@edit')->middleware('require_same_user');
-Route::match(['GET', 'POST'], 'users/{id}/update', 'Auth\UserController@update')->middleware('require_same_user');
+Route::match(['GET', 'POST'], 'users/{id}/update', 'Auth\UserController@update')->middleware('require_same_user')->name('user.update');
 Route::get('users/{user_id}/delete', 'AdminController@delete')->middleware('require_admin');
 Route::get('users/{user_id}/posts', 'Auth\UserController@posts');
 
