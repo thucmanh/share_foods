@@ -37,7 +37,7 @@ class AuthController extends Controller
                 'phone' => 'required|min:11|numeric|regex:/(01)[0-9]{9}/'
             ],
             [
-                'phone' => '正しい電話フォーマットを入力してください'
+                'phone.regex' => '正しい電話フォーマットを入力してください'
             ]
         );
         $restauran = new User;
