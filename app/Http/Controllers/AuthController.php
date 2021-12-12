@@ -34,7 +34,7 @@ class AuthController extends Controller
         $request->flash();
         $request->validate(
             [
-                'phone' => 'required|min:11|numeric|regex:/(01)[0-9]{9}/'
+                'phone' => 'required|min:11|numeric|regex:/^([0-9\s\-\+\(\)]*)$/'
             ],
             [
                 'phone.regex' => '正しい電話フォーマットを入力してください'
