@@ -52,7 +52,7 @@
 
         <div class="form-input">
             <label for="password-confirm" class="col-form-label text-md-right">パスワード確認</label>
-            <input id="password-confirm" type="password" class="form-control" name="password_confirm" value="{{ old('password_confirm') }}">
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}">
         </div>
 
         <div class="form-input pt-30">
