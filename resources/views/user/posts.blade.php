@@ -52,7 +52,7 @@
             <div class="row justify-content-center">
                 @foreach($posts as $post)
                 <div class="properties properties_home pb-20">
-                    <div class="properties__card">
+                    <div class="properties__card" style="height: 500px;">
                         <div class="properties__img overlay1">
                             @if($post->post_url == null)
                             <img src="{{asset('/user/img/pj3.1.png')}}" alt="" style="height: 200px;">
@@ -60,13 +60,12 @@
                             <img src="{{$post->post_url}}" alt="" style="height: 200px;">
                             @endif
                         </div>
-                        <div class="properties__caption">
+                        <div class="properties__caption" style="height: 200px;">
                             <h3>{{$post->title}}</h3>
-                            <p>{{$post->description}}</p>
-                            <p style="font-style: italic">Posted on {{$post->date_create}} by <a style="color:blue; " href="{{ URL::to('/users/' . $post->user_id) . '/posts' }}"><b>{{$post->user->user_name}}</b></a> </p>
-
-                            <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">Read more</a>
+                            <p style="white-space: nowrap;overflow: hidden;width: 20em;text-overflow: ellipsis;">{{$post->description}}</p>
+                            <p style="font-style: italic"><a style="color:blue; " href="{{ URL::to('/users/' . $post->user_id) . '/posts' }}"><b>{{$post->user->user_name}}</b></a>によって{{$post->date_create}}に投稿された </p>
                         </div>
+                        <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">とっと見る</a>
                     </div>
                 </div>
                 @endforeach
