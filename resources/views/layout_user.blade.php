@@ -52,8 +52,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Alert for confirm password -->
     <script>
-        var msg = '{{Session::get('alert')}}';
-        var exist = '{{Session::has('alert')}}';
+        var msg = '{{Session::get("alert")}}';
+        var exist = '{{Session::has("alert")}}';
         if(exist){
           alert(msg);
         }
@@ -100,7 +100,7 @@
                                         <form action="{{ route('search.result') }}">
                                             <div class="form-group">
                                                 <div class="input-group mb-3">
-                                                    <input type="text" name="query" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                                    <input type="text" name="query" class="form-control" placeholder='探索。。。' onfocus="this.placeholder = ''" onblur="this.placeholder = '探索。。。'">
                                                     <div class="input-group-append">
                                                         <button class="btns" type="submit"><i class="ti-search"></i></button>
                                                     </div>
