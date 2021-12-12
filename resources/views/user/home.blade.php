@@ -74,8 +74,8 @@
         </div> -->
         <div class="card-group">
         @foreach($posts as $post)
-            <div class="properties properties_home pb-20">
-                <div class="properties__card">
+            <div class="properties properties_home pb-20" >
+                <div class="properties__card" style="height: 500px;">
                     <div class="properties__img overlay1">
                         @if($post->post_url == null)
                             <img src="{{asset('/user/img/pj3.1.png')}}" alt="" style="height: 200px;">

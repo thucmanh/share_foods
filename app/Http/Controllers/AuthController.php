@@ -23,6 +23,9 @@ class AuthController extends Controller
     }
 
     public function register(Request $request){
+        if ($request->isMethod('post')) {
+            
+        }
         return view('user.register');
     }
     public function store(Request $request)
