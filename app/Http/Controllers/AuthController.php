@@ -30,18 +30,16 @@ class AuthController extends Controller
             $request->flash();
             $request->validate(
                 [
-                    'password' => 'confirmed',
                     'phone' => 'required|min:11|numeric',
-                    'images' => 'required',
-                    'images.*' => 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:4096',
+                    'avatar_url' => 'required',
+                    'avatar_url.*' => 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:4096',
                 ],
                 [
-                    'password.confirmed' => '同じパスワードを入力してください',
                     'phone.min' => '10文字で電話を入力してください',
-                    'images.required' => 'イメージをアップロードしてください',
-                    'images.*.mimes' => '画像拡張子は「jpg, png, jpeg, gif, svg」が必要です',
-                    'images.*.max' => 'イメージのサイズは4096超えできません',
-                    'images.*.image' => 'イメージ以外はアップロードができません'
+                    'avatar_url.required' => 'イメージをアップロードしてください',
+                    'avatar_url.*.mimes' => '画像拡張子は「jpg, png, jpeg, gif, svg」が必要です',
+                    'avatar_url.*.max' => 'イメージのサイズは4096超えできません',
+                    'avatar_url.*.image' => 'イメージ以外はアップロードができません'
                 ]
             );
 

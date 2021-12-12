@@ -38,6 +38,11 @@
         <div class="form-input">
             <label for="email" class="col-form-label text-md-right">アバター</label>
             <input type="file" name="avatar_url" value="{{ old('avatar_url') }}" required accept="image/png, image/jpeg">
+            @error('avatar_url')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
 
         <div class="form-input">
