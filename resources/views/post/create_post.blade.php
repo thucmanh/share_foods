@@ -10,12 +10,12 @@
                 <div class="row">
                     <div class="col-xl-8 col-lg-11 col-md-12">
                         <div class="hero__caption hero__caption2">
-                            <h1 data-animation="bounceIn" data-delay="0.2s">Create new blog</h1>
+                            <h1 data-animation="bounceIn" data-delay="0.2s">新しい投稿を作成する</h1>
                             <!-- breadcrumb Start-->
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{URL::to('/')}}">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="{{URL::to('/posts')}}">All Blog</a></li>
+                                    <li class="breadcrumb-item"><a href="{{URL::to('/')}}">ホーム</a></li>
+                                    <li class="breadcrumb-item"><a href="{{URL::to('/posts')}}">全て投稿</a></li>
                                 </ol>
                             </nav>
                             <!-- breadcrumb End -->
@@ -30,7 +30,7 @@
 <div class="container">
     <div class="row">
         <div class="comment-form">
-            <h4>Your blog</h4>
+            <h4>登校の情報</h4>
             <form class="form-contact comment_form" action="{{URL::to('/create_post')}}" id="commentForm" method="post" enctype="multipart/form-data" >
                 @csrf
                 <div class="row">
@@ -47,7 +47,7 @@
                     <div class="col-sm-4">
                         <div class="col-xs-12 col-sm-8">
                             <label for="post_url" class="btn btn3 custom-file-upload">
-                                    Upload cover image
+                                    アップロード
                             </label>
 
                             <input type="file" name="post_url" class="file-upload" id="post_url">
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="col-12">
-                        <p>Tags</p>
+                        <p>タグ</p>
                         <div class="form-group">
                             @foreach($tags as $tag)
                             <label class="checkbox-inline"><input type="checkbox" name="tags[]" value="{{$tag->tag_id}}">{{$tag->tag_title}}</label>
@@ -70,7 +70,7 @@
 
                     <div class="col-12">
                         <div class="form-group">
-                            <textarea class="form-control w-100" name="description" id="comment" cols="30" rows="1" placeholder="Description"></textarea>
+                            <textarea class="form-control w-100" name="description" id="comment" cols="30" rows="1" placeholder="説明。。。"></textarea>
                             @error('description')
                             <b><span style="color: red;">{{ $message }}</span></b>
                             @enderror
@@ -82,8 +82,8 @@
                     <div class="col-12">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#content" aria-controls="content" role="tab" data-toggle="tab">Edit content</a></li>
-                            <li role="presentation"><a href="#preview" aria-controls="preview" role="tab" data-toggle="tab">Preview changes</a></li>
+                            <li role="presentation" class="active"><a href="#content" aria-controls="content" role="tab" data-toggle="tab">コンテンツを編集</a></li>
+                            <li role="presentation"><a href="#preview" aria-controls="preview" role="tab" data-toggle="tab">プレビューの変更</a></li>
                         </ul>
                     </div>
                     <div class="col-12">
@@ -92,7 +92,7 @@
                             {{-- <div class="tab-content"> --}}
                                 <div role="tabpanel" class="tab-pane active" id="content">
                                     <div class="form-group">
-                                        <textarea class="form-control w-100" name="detail_content" id="post-content" cols="50" rows="30" placeholder="Content"></textarea>
+                                        <textarea class="form-control w-100" name="detail_content" id="post-content" cols="50" rows="30" placeholder="コンテンツ"></textarea>
                                         @error('detail_content')
                                         <b><span style="color: red;">{{ $message }}</span></b>
                                         @enderror
@@ -110,7 +110,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="button button-contactForm btn_1 boxed-btn">Post</button>
+                    <button type="submit" class="button button-contactForm btn_1 boxed-btn">投稿</button>
                 </div>
             </form>
         </div>

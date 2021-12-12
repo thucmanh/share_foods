@@ -30,6 +30,13 @@ class AuthController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'phone' => 'required|min:11|numeric|regex:/(01)[0-9]{9}/'
+            ],
+            [
+                'phone' => '正しい電話フォーマットを入力してください'
+            ]);
         $restauran = new User;
         $restauran->user_name = $request->user_name;
         $restauran->email = $request->email;
@@ -37,8 +44,8 @@ class AuthController extends Controller
         $restauran->isRestauran = 1;
         $restauran->des = $request->des;
         $restauran->save();
-        $number_of_users = User::where('isRestauran', 0)->count();
-        $number_of_restaurans = User::where('isRestauran', 1)->count();
+        $number_of_users = User::where('isrestauran', 0)->count();
+        $number_of_restaurans = User::where('isrestauran', 1)->count();
         $number_of_posts = Post::count();
             $number_of_tags = Tag::count();
             $users = User::all();
