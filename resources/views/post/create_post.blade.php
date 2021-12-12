@@ -50,7 +50,7 @@
                                     アップロード
                             </label>
 
-                            <input type="file" name="post_url" class="file-upload" id="post_url">
+                            <input type="file" name="post_url" class="file-upload" id="post_url" required accept="image/png, image/jpeg">
                         </div>
                         <div class="vspace-12-sm"></div>
                     </div>

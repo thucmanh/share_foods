@@ -9,6 +9,7 @@ use App\Tag;
 use App\PostTag;
 use DB;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Hash;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 
@@ -29,14 +30,32 @@ class AuthController extends Controller
             $request->flash();
             $request->validate(
                 [
-                    'phone' => 'required|min:11|numeric|regex:/^([0-9\s\-\+\(\)]*)$/'
+                    'phone' => 'required|min:11|numeric',
+                    'images' => 'required',
+                    'images.*' => 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:4096',
                 ],
                 [
-                    'phone.regex' => '正しい電話フォーマットを入力してください'
+                    'phone.min' => '10文字で電話を入力してください',
+                    'images.required' => 'イメージをアップロードしてください',
+                    'images.*.mimes' => '画像拡張子は「jpg, png, jpeg, gif, svg」が必要です',
+                    'images.*.max' => 'イメージのサイズは4096超えできません',
+                    'images.*.image' => 'イメージ以外はアップロードができません'
                 ]
             );
 
-            
+            $path = $this->save_image($request->file('avatar_url'));
+
+            $user = new User;
+
+            $user->user_name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->phone = $request->phone;
+            $user->avatar_url = $path['data']['url'];
+
+            $user->save();
+
+            return redirect('/login');
         }
         return view('user.register');
     }
@@ -45,16 +64,16 @@ class AuthController extends Controller
         $request->flash();
         $request->validate(
             [
-                'phone' => 'required|min:11|numeric|regex:/^([0-9\s\-\+\(\)]*)$/'
+                'phone' => 'required|min:11|numeric'
             ],
             [
-                'phone.regex' => '正しい電話フォーマットを入力してください'
+                'phone.min' => '10文字で電話を入力してください'
             ]
         );
         $restauran = new User;
         $restauran->user_name = $request->user_name;
         $restauran->email = $request->email;
-        $restauran->password = bcrypt($request->password);
+        $restauran->password = Hash::make($request->password);
         $restauran->isRestauran = 1;
         $restauran->des = $request->des;
         $restauran->save();
@@ -84,5 +103,26 @@ class AuthController extends Controller
     public function change_pass(Request $request)
     {
         return view('user.change_pass');
+    }
+
+    private function save_image($image, $name = null)
+    {
+        $API_KEY = 'c6817f9f49dc42bb4f04bf9c17721c89';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://api.imgbb.com/1/upload?key=' . $API_KEY);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_SAFE_UPLOAD, true);
+        $extension = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
+        $file_name = ($name) ? $name . '.' . $extension : $image->getClientOriginalName();
+        $data = array('image' => base64_encode(file_get_contents($image)), 'name' => $file_name);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        $result = curl_exec($ch);
+        if (curl_errno($ch)) {
+            return 'Error:' . curl_error($ch);
+        } else {
+            return json_decode($result, true);
+        }
+        curl_close($ch);
     }
 }
