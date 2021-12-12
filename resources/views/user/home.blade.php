@@ -3,7 +3,6 @@
 
 <!--? slider Area Start-->
 
-
 <section class="slider-area slider-area2">
     <div class="slider-active">
         <!-- Single Slider -->
@@ -35,7 +34,7 @@
             @foreach($posts as $post)
             <div class="properties properties_home pb-20">
                 @if($post->user->isrestauran)
-                <div class="properties__card" style="height: 500px;border-color: rgb(201, 76, 76);border-style: solid;">
+                <div class="properties__card" style="height: 500px;border-color: rgb(186 237 148);border-style: solid;background-color: #ecf5e3;">
                 @else
                 <div class="properties__card" style="height: 500px;">
                 @endif
