@@ -12,8 +12,8 @@
                 <div class="row">
                     <div class="col-xl-6 col-lg-8 col-md-12">
                         <div class="hero__caption hero__caption2">
-                        <h1 data-animation="fadeInLeft" data-delay="0.2s">Sharing my Food<br> platform</h1>
-                        <p data-animation="fadeInLeft" data-delay="0.4s">When you eat food with your family and friends, it always tastes better.</p>
+                        <h1 data-animation="fadeInLeft" data-delay="0.2s">レシビを共有する<br> プラットフォーム</h1>
+                        <p data-animation="fadeInLeft" data-delay="0.4s">家族や友達と一緒に食べると、いつも美味しくなります</p>
                         </div>
                     </div>
                 </div>
@@ -21,47 +21,6 @@
         </div>
     </div>
 </section>
-<!-- ? services-area -->
-<!-- 
-<div class="services-area">
-    <div class="container">
-        <div class="row justify-content-sm-center">
-            <div class="col-lg-4 col-md-6 col-sm-8">
-                <div class="single-services mb-30">
-                    <div class="features-icon">
-                        <img src="{{asset('/user/img/icon/icon1.svg')}}" alt="">
-                    </div>
-                    <div class="features-caption">
-                        <h3>60+ Post every day</h3>
-                        <p>We share knowledge about: IT, Experiences, Work, Travel,...  </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-8">
-                <div class="single-services mb-30">
-                    <div class="features-icon">
-                        <img src="{{asset('/user/img/icon/icon2.svg')}}" alt="">
-                    </div>
-                    <div class="features-caption">
-                        <h3>Expert users</h3>
-                        <p>Vietnames experts are all here.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-8">
-                <div class="single-services mb-30">
-                    <div class="features-icon">
-                        <img src="{{asset('/user/img/icon/icon3.svg')}}" alt="">
-                    </div>
-                    <div class="features-caption">
-                        <h3>30+ minutes reading </h3>
-                        <p>The more you read, the more you learn.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>  -->
 <!-- Courses area start -->
 <div class="courses-area section-padding40 fix">
     <div class="container">
@@ -86,10 +45,9 @@
                     <div class="properties__caption">
                         <h3>{{$post->title}}</h3>
                         <p>{{$post->description}}</p>
-                        <p style="font-style: italic">Posted on {{$post->date_create}} by <a style="color:blue; " href="{{ URL::to('/users/' . $post->user_id) . '/posts' }}"><b>{{$post->user->user_name}}</b></a> </p>
-
-                        <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">Read more</a>
+                        <p style="font-style: italic"><a style="color:blue; " href="{{ URL::to('/users/' . $post->user_id) . '/posts' }}"><b>{{$post->user->user_name}}</b></a>によって{{$post->date_create}}に投稿された </p>
                     </div>
+                    <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">とっと見る</a>
                 </div>
             </div>
             @endforeach
