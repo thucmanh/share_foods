@@ -116,7 +116,7 @@
                                             <ul id="navigation" class="d-flex justify-content-end align-items-center">
 
                                                 @if(Auth::user())
-                                                    <li><a style="color:black"  href="{{ URL::to('users/' . Auth::user()->user_id) }}"> いらっしゃいませ {{Auth::user()->user_name}}!!</a></li>
+                                                    <li><a style="color:black"  href="{{ URL::to('users/' . Auth::user()->user_id) }}">{{Auth::user()->user_name}}!!</a></li>
                                                     <li><a style="color:black"  href="{{ URL::to('/top-posts') }}">投稿ランク</a></li>
                                                     <li><a style="color:black" href="{{ URL::to('/my-posts') }}">私の投稿</a></li>
                                                     <li><a style="color:black" href="{{ URL::to('/create_post') }}">投稿を作成する</a></li>

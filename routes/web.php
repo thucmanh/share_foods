@@ -33,7 +33,7 @@ Route::get('/top-posts','PostController@get_top_posts');
 /*User authen*/
 Route::match(['GET','POST'],'/login','AuthController@login');
 Route::match(['GET','POST'],'/register','AuthController@register');
-Route::post('/store-restauran', 'Authcontroller@store')->name('restauran.store');
+Route::post('/store-restauran', 'AuthController@store')->name('restauran.store');
 Route::match(['GET','POST'],'/profiles','AuthController@profile');
 Route::match(['GET','POST'],'/logout','Auth\LoginController@logout');
 
