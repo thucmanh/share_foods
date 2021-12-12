@@ -26,9 +26,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-       if(Schema::hasTable('tags')){
+        if (config('app.env') === 'production') {
+            \URL::forceScheme('https');
+        }
+        if (Schema::hasTable('tags')) {
             $tags = DB::table("tags")->get();
-            View::share('tags',$tags);
-        }   
+            View::share('tags', $tags);
+        }
     }
 }
