@@ -38,7 +38,7 @@
                                     <div id="user-profile-3" class="user-profile row">
                                         <div class="col-sm-offset-1 col-sm-10">
                                             <div class="space"></div>
-                                            <form class="form-horizontal" action="{{url('/users').'/'.Auth::user()->user_id.'/update'}}}}" method="POST" enctype="multipart/form-data">
+                                            <form class="form-horizontal" action="{{url('/users').'/'.Auth::user()->user_id.'/update'}}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="tabbable">
                                                     <div class="tab-content profile-edit-tab-content">
