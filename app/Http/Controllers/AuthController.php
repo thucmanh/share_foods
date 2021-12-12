@@ -65,19 +65,30 @@ class AuthController extends Controller
         $request->flash();
         $request->validate(
             [
-                'phone' => 'required|min:11|numeric'
+                'phone' => 'required|min:11|numeric',
+                'avatar_url' => 'required',
+                'avatar_url.*' => 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:4096',
             ],
             [
-                'phone.min' => '10文字で電話を入力してください'
+                'phone.min' => '10文字で電話を入力してください',
+                'avatar_url.required' => 'イメージをアップロードしてください',
+                'avatar_url.*.mimes' => '画像拡張子は「jpg, png, jpeg, gif, svg」が必要です',
+                'avatar_url.*.max' => 'イメージのサイズは4096超えできません',
+                'avatar_url.*.image' => 'イメージ以外はアップロードができません'
             ]
         );
+
+        $path = $this->save_image($request->file('avatar_url'));
+
         $restauran = new User;
         $restauran->user_name = $request->user_name;
         $restauran->email = $request->email;
         $restauran->password = Hash::make($request->password);
-        $restauran->isRestauran = 1;
+        $restauran->isrestauran = 1;
+        $restauran->avatar_url = $path['data']['url'];
         $restauran->des = $request->des;
         $restauran->save();
+
         $number_of_users = User::where('isrestauran', 0)->count();
         $number_of_restaurans = User::where('isrestauran', 1)->count();
         $number_of_posts = Post::count();
@@ -86,6 +97,7 @@ class AuthController extends Controller
         $posts = Post::all();
         $tags = Tag::all();
         $tags = $tags->SortByDesc('tag_id');
+
         return view('admin.home')
             ->with(compact('number_of_users', $number_of_users))
             ->with(compact('number_of_restaurans', $number_of_restaurans))
