@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
@@ -32,7 +33,8 @@ Route::get('/top-posts','PostController@get_top_posts');
 
 /*User authen*/
 Route::match(['GET','POST'],'/login','AuthController@login');
-Route::match(['GET','POST'],'/register','AuthController@register')->name('register');
+Route::match(['GET'],'/register','AuthController@register');
+Route::post('/register_cus', [AuthController::class, 'register'])->name('register');
 Route::post('/store-restauran', 'AuthController@store')->name('restauran.store');
 Route::match(['GET','POST'],'/profiles','AuthController@profile');
 Route::match(['GET','POST'],'/logout','Auth\LoginController@logout');
