@@ -28,7 +28,7 @@ class AdminController extends Controller
                 ->with(compact('users', $users))
                 ->with(compact('posts', $posts))
                 ->with(compact('tags', $tags));
-        }else{
+        } else{
             return redirect('/');
         }
     }
