@@ -32,8 +32,8 @@
                         <a href={{ URL::to('users/' . $post->user_id) }}>{{$post->user->user_name}}</a>
                     </td>
                     <td>{{ $post->date_create }}</td>
-                    <td><a class="btn btn-primary btn-sm" href={{ URL::to('posts/' . $post->post_id) }}>Show</a></td>
-                    <td><a class="btn btn-danger btn-sm" href={{ URL::to('posts/delete/' . $post->post_id) }} onclick="return alert_delete('Are you sure to delete?');">Delete</a></td>
+                    <td><a class="btn btn-primary btn-sm" href={{ URL::to('posts/' . $post->post_id) }}>見せる</a></td>
+                    <td><a class="btn btn-danger btn-sm" href={{ URL::to('posts/delete/' . $post->post_id) }} onclick="return alert_delete('削除してもよろしいですか？');">削除</a></td>
                     </tr>
                     @endforeach
                 </tbody>

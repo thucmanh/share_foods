@@ -140,13 +140,7 @@
                                                             @endif
                                                             <li><a
                                                                     href="{{ URL::to('users/' . Auth::user()->user_id) }}">プロフィールを見る</a></li>
-                                                            <li><a
-                                                                    href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">プロファイル編集</a></li>
-                                                            <!-- @if (auth()->user()->admin)
-                                                                 <li><a href="{{ URL::to('admin/home-page') }}">Admin
-                                                                        Page</a></li>
-                                                            @endif -->
-                                                            <!-- <li><a href="{{URL::to('/my-posts')}}">My posts</a></li> -->
+                                                            <li><a href="{{ URL::to('users/' . Auth::user()->user_id . '/edit') }}">プロファイル編集</a></li>
                                                             <li><a href="{{ URL::to('/logout') }}">ログアウト</a></li>
                                                         </ul>
                                                     </li>
