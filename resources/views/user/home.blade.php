@@ -55,6 +55,7 @@
                 </div>
                 @endforeach
             </div>
+            <div>{!! $posts->links() !!}</div>
         </div>
     </div>
     <!-- Courses area End -->

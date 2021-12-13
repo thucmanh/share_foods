@@ -56,7 +56,7 @@
                         <th>説明</th>
                         <th>作成日</th>
                         <th>作成人</th>
-                        <th>スキの数</th>Ï
+                        <th>スキの数</th>
                     </tr>
                 </tfoot>
                 <tbody>
