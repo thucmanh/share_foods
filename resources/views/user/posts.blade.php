@@ -65,7 +65,7 @@
                             <p style="white-space: nowrap;overflow: hidden;width: 20em;text-overflow: ellipsis;">{{$post->description}}</p>
                             <p style="font-style: italic"><a style="color:blue; " href="{{ URL::to('/users/' . $post->user_id) . '/posts' }}"><b>{{$post->user->user_name}}</b></a>によって{{$post->date_create}}に投稿された </p>
                         </div>
-                        <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">とっと見る</a>
+                        <a href="{{URL::to('/posts/'.$post->post_id)}}" class="border-btn border-btn2">もっと見る</a>
                     </div>
                 </div>
                 @endforeach
