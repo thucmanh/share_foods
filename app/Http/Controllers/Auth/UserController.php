@@ -31,13 +31,14 @@ class UserController extends Controller
                 $user->avatar_url = $path['data']['url'];
             }
             $request->validate([
-                'phone' => 'min:8|numeric',
+                'phone' => 'min:11|numeric',
             ]);
 
             $user->last_name = $request->input('lastname');
             $user->first_name = $request->input('firstname');
             $user->birthday = $request->input('birthday');
             $user->gender = $request->input('gender');
+            $user->des = $request->input('des');
 
             $user->address = $request->input('address');
             $user->phone = $request->input('phone');
