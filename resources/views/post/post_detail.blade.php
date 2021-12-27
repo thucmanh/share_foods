@@ -52,6 +52,7 @@
                         <h2 style="color: #2d2d2d;">
                             {{$post->title}}
                         </h2>
+                        <p>{{$post->description}}</p>
                         <ul class="blog-info-link mt-3 mb-4">
                             <li><a style="color:blue; " href="{{ URL::to('users/' . $post->user->user_id) }}"><i class="fa fa-user"></i> <b>{{$post->user->user_name}}</b></a></li>
                             <li><a href="#comments-area"><i class="fa fa-comments"></i> {{$comment_count}} コメント</a></li>
@@ -90,6 +91,12 @@
                                 }
                             });
                         </script>
+                        <div class="quote-wrapper">
+                            <div class="quotes">
+                            <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js"></script>
+                            <b>材料</b>
+                            <br><span>豚肉：</span><span>1000グラム</span>
+                        </div>
                         <div class="quote-wrapper">
                             <div class="quotes">
                                 <script src="https://cdn.jsdelivr.net/npm/markdown-element/dist/markdown-element.min.js"></script>

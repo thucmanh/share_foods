@@ -27,6 +27,11 @@ class UserController extends Controller
 
         if ($request->isMethod("POST")) {
             if ($request->hasFile('avatar_url')) {
+                $request->validate(
+                    [
+                        'avatar_url' => 'image'
+                    ]
+                );
                 $path = $this->save_image($request->file('avatar_url'));
                 $user->avatar_url = $path['data']['url'];
             }

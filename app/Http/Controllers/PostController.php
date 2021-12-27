@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\SESSION;
 use App\Http\Requests;
 use App\Post;
 use App\PostTag;
+use App\Material;
+use App\PostMaterial;
 use phpDocumentor\Reflection\Types\Compound;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
@@ -112,6 +114,8 @@ class PostController extends Controller
     # Create new post
     public function create(Request $request)
     {
+        $materials = Material::all();
+        // dd($request);
         $current_user = User::find(auth()->user()->user_id);
         if ($request->isMethod('post')) {
             # Validate post form data
@@ -120,14 +124,26 @@ class PostController extends Controller
                     'title' => ['required', 'min:4', 'max:255'],
                     'tags' => 'required',
                     'description' => 'required',
-                    'detail_content' => 'required'
+                    'detail_content' => 'required',
+                    'material' => 'required',
+                    'amount' => 'required',
                 ]
             );
 
+            $post_material = [];
+            foreach ($request->material as $key => $value) {
+                $post_material[] = [
+                    'material_id' => $key+2,
+                    'post_id' => 3,
+                    'amount' => $request->amount[$key],
+                ];
+            }
+            // dd($post_material);
+            DB::table('post_material')->insert($post_material);
+            dd("test");
             $post = new Post();
             $post->user_id = $current_user->user_id;
             $post->title = $request->title;
-
             if ($request->hasFile('post_url')) {
                 $request->validate(
                     [
@@ -151,7 +167,7 @@ class PostController extends Controller
             }
             return redirect('/posts/' . $post_id);
         }
-        return view('post.create_post');
+        return view('post.create_post', compact('materials'));
     }
 
     # Edit post
@@ -174,14 +190,29 @@ class PostController extends Controller
         if ($request->isMethod('post')) {
             $post = Post::find($post_id);
             $post->title = $request->title;
-
+            $request->validate(
+                [
+                    'title' => ['required', 'min:4', 'max:255'],
+                    'tags' => 'required',
+                    'description' => 'required',
+                    'detail_content' => 'required',
+                ]
+            );
             if ($request->hasFile('post_url')) {
-                $filenameWithExt = $request->file('post_url')->getClientOriginalName();
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                $extension = $request->file('post_url')->getClientOriginalExtension();
-                $filenameToStore = $filename . '_' . time() . '.' . $extension;
-                $path = $request->file('post_url')->storeAs('public/post_url', $filenameToStore);
-                $post->post_url = $filenameToStore;
+                $request->validate(
+                    [
+                        'post_url' => 'image'
+                    ]
+                );
+                // $filenameWithExt = $request->file('post_url')->getClientOriginalName();
+                // $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // $extension = $request->file('post_url')->getClientOriginalExtension();
+                // $filenameToStore = $filename . '_' . time() . '.' . $extension;
+                // $path = $request->file('post_url')->storeAs('public/post_url', $filenameToStore);
+                // $post->post_url = $filenameToStore;
+                $path = $this->save_image($request->file('post_url'));
+                // dd($path);
+                $post->post_url = $path['data']['url'];
             }
 
             $post->content = $request->detail_content;

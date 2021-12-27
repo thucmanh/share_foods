@@ -131,6 +131,7 @@
                                                                     <span>
                                                                         <input style=" height: 100px; width:70%" type="text" id="form-field-website" name="des" placeholder="description" value={{ $user->des }}>
                                                                     </span>
+                                                                    <p><i>行を分割したい場合は、分の最後に「..」と入力してください。</i></p>
                                                                 </div>
                                                             </div>
 

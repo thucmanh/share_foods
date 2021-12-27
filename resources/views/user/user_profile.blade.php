@@ -101,9 +101,9 @@
                                                                         <label class="col-sm-4 control-label no-padding-right" for="form-field-phone">紹介文</label>
 
                                                                         <div class="col-sm-8">
-                                                                            <span class="input-icon input-icon-right">
+                                                                            <p class="input-icon input-icon-right" id="a">
                                                                                 {{ $user->des }}
-                                                                            </span>
+                                                                            </p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -137,4 +137,13 @@
         </div>
     </div>
 </div>
+<script >
+    window.onload = function() {
+        var txt;
+        txt = document.getElementById('a');
+        var text = txt.textContent.split("..");
+        var str = text.join('.</br>');
+        txt.innerHTML = str;
+    }
+</script>
 @endsection

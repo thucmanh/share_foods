@@ -34,24 +34,31 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
+                            <b style="color: red">*</b>
                             <input class="form-control" name="title" id="title" type="text" placeholder="Title" value="{{$post->title}}" >
                         </div>
                     </div>
 
                     <div class="col-sm-4">
                         <div class="col-xs-12 col-sm-8">
+                            <br>
                             <label for="post_url" class="btn btn3 custom-file-upload">
                                  Upload cover image
                             </label>
 
-                            <input type="file" name="post_url" class="file-upload" id="post_url">
+                            <input type="file" name="post_url" class="file-upload" id="post_url" accept="image/*" onchange="readURL(this);">
                             {{-- <input type="file" name="post_url" id="post_url"> --}}
                         </div>
                         <div class="vspace-12-sm"></div>
                     </div>
 
                     <div class="col-12">
-                        <p>Tags</p>
+                        <img
+                        style=" max-width:400px;max-height: 400px" hidden id="blah" />
+                    </div>
+
+                    <div class="col-12">
+                        <p>Tags <b style="color: red">*</b></p>
                         <div class="form-group">
                             @foreach($tags as $tag)
                             <label class="checkbox-inline" >
@@ -72,7 +79,7 @@
                     <div class="col-12">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#content" aria-controls="content" role="tab" data-toggle="tab">Edit content</a></li>
+                            <li role="presentation" class="active"><a href="#content" aria-controls="content" role="tab" data-toggle="tab">Edit content <b style="color: red">*</b></a></li>
                             <li role="presentation"><a href="#preview" aria-controls="preview" role="tab" data-toggle="tab">Preview changes</a></li>
                         </ul>
                     </div>
@@ -117,6 +124,19 @@
         }
         alert("Please choose tag");
         return false;
+    }
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result);
+                $("#blah").removeAttr('hidden');
+            };
+            reader.readAsDataURL(input.files[0]);
+            
+        }
     }
 </script>
 @endsection

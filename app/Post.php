@@ -43,6 +43,11 @@ class Post extends Model implements Searchable
         return $this->belongsTo('App\User','user_id');
     }
 
+    public function material()
+    {
+        return $this->belongstoMany('App\Material');
+    }
+
     public function getSearchResult(): SearchResult
     {
         $url = route('post.show', $this->post_id);
